@@ -15,17 +15,17 @@ app.listen(port);
 console.log('The server is listening to ' + port);
 
 app.use('/tweets', function (req, res, next) {
-  console.log('these are your tweets');
+  res.send('these are your tweets');
   next();
 });
 
 app.use('/user', function (req, res, next) {
-  console.log('this is your user account');
+  res.send('this is your user account');
   next();
 });
 
-router.get('/?user=rob', function(req, res) {
-    res.send('logged in as rob');
+router.get('/login', function(req, res, next) {
+ res.send("logged in as " + req.query.id)
 });
 
 module.exports = router;
